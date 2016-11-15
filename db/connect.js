@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 var fs = require('fs');
 var path = require('path');
-var config = JSON.parse(fs.readLinesSync(path.join(__dirname, 'db', 'config.json')));
+var config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json')));
 
 exports.init = function(){
   var db = {};
@@ -22,7 +22,7 @@ exports.init = function(){
   files = fs.readdirSync(path.join(__dirname,'db','scripts'));
   for (var x = 0; x < files.length; x++) {
     if (path.extname(files[x]) === '.sql') {
-      db.scripts[path.basename(files[x])] = fs.readLinesSync(path.join(__dirname, 'db','scripts', files[x])).toString();
+      db.scripts[path.basename(files[x])] = fs.readFileSync(path.join(__dirname, 'db','scripts', files[x])).toString();
     }
   }
 };

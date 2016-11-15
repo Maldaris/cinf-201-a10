@@ -15,7 +15,7 @@ exports.init = function(db, model){
   router.get('/:id', function(req, res){
     var post_id = req.params.id;
     db.schema.posts.getPostById(db.conn, [post_id], function(success, result){
-      return res.end({'success', success, 'result', result});
+      return res.end({'success' :  success, 'result' : result});
     });
   });
   router.get('/getMostRecentPosts', function(req, res){

@@ -15,7 +15,7 @@ exports.init = function(db, model){
   router.get('/:username', function(req, res){
     var profile_username = req.params.id;
     db.schema.profiles.getPostById(db.conn, [profile_username], function(success, result){
-      return res.end({'success', success, 'result', result});
+      return res.end({'success' : success, 'result' : result});
     });
   });
   return router;
